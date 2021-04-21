@@ -9,7 +9,7 @@
 //
 // Model version                  : 1.8
 // Simulink Coder version         : 9.3 (R2020a) 18-Nov-2019
-// C/C++ source code generated on : Tue Apr 20 15:19:55 2021
+// C/C++ source code generated on : Wed Apr 21 01:23:58 2021
 //
 // Target selection: ert.tlc
 // Embedded hardware selection: Generic->Unspecified (assume 32-bit Generic)
@@ -952,7 +952,10 @@ void vehicle_dual_initialize(void)
   rtmSetFirstInitCond(vehicle_dual_M, 1);
 
   {
-    char_T tmp[4];
+    char_T tmp[8];
+    char_T tmp_0[4];
+    int32_T i;
+    static const char_T tmp_1[7] = { 'c', 'm', 'd', '_', 'v', 'e', 'l' };
 
     // InitializeConditions for Integrator: '<S79>/Integrator' incorporates:
     //   Integrator: '<S26>/Integrator'
@@ -989,24 +992,26 @@ void vehicle_dual_initialize(void)
     // Start for MATLABSystem: '<S3>/SourceBlock'
     vehicle_dual_DW.obj_g.matlabCodegenIsDeleted = false;
     vehicle_dual_DW.obj_g.isInitialized = 1;
-    tmp[0] = 'c';
-    tmp[1] = 'm';
-    tmp[2] = 'd';
-    tmp[3] = '\x00';
+    for (i = 0; i < 7; i++) {
+      tmp[i] = tmp_1[i];
+    }
+
+    tmp[7] = '\x00';
     Sub_vehicle_dual_2.createSubscriber(tmp, 1);
     vehicle_dual_DW.obj_g.isSetupComplete = true;
 
+    // End of Start for MATLABSystem: '<S3>/SourceBlock'
     // End of SystemInitialize for SubSystem: '<Root>/Subscribe'
 
     // SystemInitialize for Atomic SubSystem: '<Root>/Publish'
     // Start for MATLABSystem: '<S2>/SinkBlock'
     vehicle_dual_DW.obj.matlabCodegenIsDeleted = false;
     vehicle_dual_DW.obj.isInitialized = 1;
-    tmp[0] = 'v';
-    tmp[1] = 'e';
-    tmp[2] = 'l';
-    tmp[3] = '\x00';
-    Pub_vehicle_dual_11.createPublisher(tmp, 1);
+    tmp_0[0] = 'v';
+    tmp_0[1] = 'e';
+    tmp_0[2] = 'l';
+    tmp_0[3] = '\x00';
+    Pub_vehicle_dual_11.createPublisher(tmp_0, 1);
     vehicle_dual_DW.obj.isSetupComplete = true;
 
     // End of SystemInitialize for SubSystem: '<Root>/Publish'
